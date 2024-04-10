@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* 隐藏滚动条 */
+    }
+    iframe {
+      border: none; /* 移除边框 */
+      width: 100vw; /* 视口宽度 */
+      height: 100vh; /* 视口高度 */
+    }
+  </style>
+  <script>
+    const aid = {{.appId}};
+    const cid = {{.channelId}};
+  </script>
+  <link rel="manifest" href="/download/manifest.json" />
+</head>
+<body>
+<script type="module">
+  const CACHE_NAME="cache_v1"
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+              .register("/sw.js")
+              .then(async (registration) => {
+                console.log("Service Worker registered:", registration);
+                const cache = await caches.open(CACHE_NAME);
+                await cache.addAll(['/download/manifest.json', '/download/verify.html','/sw.js','/download/js/g.js','/favicon.ico']);
+              });
+    });
+  }
+</script>
+{{if .isIframe}}
+  <iframe src="{{.app_url}}" frameborder="0">
+  </iframe>
+  <script>
+    const isOpenNewUrl = false
+  </script>
+{{else}}
+  <script>
+      const isOpenNewUrl = true
+      const newUrl = {{.app_url}}
+  </script>
+{{end}}
+</body>
+<script src="/download/js/g.js"></script>
+</html>

@@ -1,0 +1,91 @@
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loader {
+  border: 3px solid #f3f3f3; /* Light grey */
+  border-top: 3px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* 模态框背景 */
+.modal {
+  display: none; /* 默认隐藏 */
+  position: fixed; /* 固定位置 */
+  z-index: 1000; /* 位于顶层 */
+  left: 0;
+  top: 0;
+  width: 100%; /* 宽度100% */
+  height: 100%; /* 高度100% */
+  overflow: auto; /* 启用滚动条 */
+  background-color: rgba(0, 0, 0, 0.4); /* 背景颜色，带透明度 */
+}
+
+/* 模态框内容 */
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* 设置一个最小宽度和最小高度 */
+  min-width: 300px;
+  min-height: 200px;
+}
+.p-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+}
+/* 按钮 */
+#copyBtn {
+  margin:20px 10% 0;
+  width: 80%;
+  height: 36px ;
+  /*padding: 8px 16px; !* 按钮内边距 *!*/
+  /*margin-top: 20px; !* 按钮与上方内容的间隔 *!*/
+  background-color: #01875f; /* 浅灰色背景 */
+  color: #fff; /* 文字颜色 */
+  border: none; /* 边框颜色 */
+  border-radius: 4px; /* 轻微的圆角 */
+  cursor: pointer; /* 鼠标悬停时的指针样式 */
+  outline: none; /* 移除焦点时的轮廓 */
+}
+/*.btn-div{*/
+/*  width: 100%;*/
+/*  padding: 20px;*/
+/*  position: absolute;*/
+/*  bottom: 20px;*/
+/*  right: 20px;*/
+/*  height: 36px;*/
+/*}*/
+
+/*!* 按钮在鼠标悬停时的样式 *!*/
+/*button:hover {*/
+/*  background-color: #e6e6e6; !* 鼠标悬停时背景色变深 *!*/
+/*  border-color: #adadad; !* 鼠标悬停时边框颜色变深 *!*/
+/*}*/
